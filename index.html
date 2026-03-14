@@ -7,18 +7,18 @@
 
   :root {
     --green: #239710;
-    --green-light: rgba(35,151,16,0.12);
-    --green-border: rgba(35,151,16,0.3);
+    --green-light: rgba(35,151,16,0.08);
+    --green-mid: rgba(35,151,16,0.15);
+    --green-border: rgba(35,151,16,0.25);
     --green-dark: #1a7009;
-    --dark: #0a0a0a;
-    --dark-border: rgba(255,255,255,0.08);
-    --text-white: rgba(255,255,255,0.88);
-    --text-muted: rgba(255,255,255,0.42);
-    --text-mid: rgba(255,255,255,0.6);
-    --light-card: #ffffff;
-    --light-border: rgba(0,0,0,0.09);
-    --light-text: #1a1a1a;
-    --light-muted: #888880;
+    --green-deep: #0d3d08;
+    --card-bg: #ffffff;
+    --card-border: #e8e6e0;
+    --text-main: #1a1a1a;
+    --text-mid: #444440;
+    --text-muted: #888880;
+    --text-faint: #aaa9a2;
+    --divider: #eceae4;
     --radius: 12px;
   }
 
@@ -29,36 +29,53 @@
     margin: 0 auto;
     padding: 0 0 2rem;
     background: transparent;
+    color: #1a1a1a;
   }
 
-  /* SECTION HEADER */
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-bottom: 1.25rem;
-    flex-wrap: wrap;
-  }
   .section-label {
     font-size: 10px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: #888880;
+    color: var(--text-muted);
   }
   .section-stat {
     font-size: 10px;
-    letter-spacing: 0.06em;
-    color: #aaa9a2;
+    color: var(--text-faint);
+  }
+  .section-badge {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--green-light);
+    color: var(--green-dark);
+    border: 0.5px solid var(--green-border);
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .section-left {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
   }
 
   /* FEATURED QUOTE */
   .featured-quote {
-    background: var(--dark);
+    background: var(--green-deep);
     border-radius: var(--radius);
     padding: 2.25rem 2.5rem;
     margin-bottom: 12px;
     position: relative;
     overflow: hidden;
+    border: 0.5px solid rgba(35,151,16,0.2);
   }
   .fq-bg-char {
     position: absolute;
@@ -66,7 +83,7 @@
     left: 18px;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 200px;
-    color: rgba(35,151,16,0.07);
+    color: rgba(35,151,16,0.12);
     line-height: 1;
     pointer-events: none;
     user-select: none;
@@ -76,9 +93,9 @@
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    background: var(--green-light);
-    color: var(--green);
-    border: 0.5px solid var(--green-border);
+    background: rgba(35,151,16,0.2);
+    color: #7dd670;
+    border: 0.5px solid rgba(35,151,16,0.35);
     padding: 3px 12px;
     border-radius: 2px;
     margin-bottom: 14px;
@@ -92,13 +109,15 @@
   .fq-text {
     font-size: 17px;
     font-weight: 300;
-    color: var(--text-white);
+    color: rgba(255,255,255,0.88);
     line-height: 1.72;
     max-width: 700px;
     margin-bottom: 22px;
+    font-style: italic;
   }
   .fq-text strong {
     font-weight: 500;
+    font-style: normal;
     color: #ffffff;
   }
   .fq-meta {
@@ -110,16 +129,15 @@
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: #1a1a1a;
-    border: 0.5px solid rgba(255,255,255,0.1);
+    background: rgba(35,151,16,0.2);
+    border: 0.5px solid rgba(35,151,16,0.35);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 13px;
     font-weight: 500;
-    color: var(--green);
+    color: #7dd670;
     flex-shrink: 0;
-    letter-spacing: 0.02em;
   }
   .fq-name {
     font-size: 14px;
@@ -129,11 +147,11 @@
   }
   .fq-detail {
     font-size: 11px;
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.4);
     letter-spacing: 0.04em;
   }
 
-  /* QUOTE GRID */
+  /* PARENT QUOTE GRID */
   .quote-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -147,14 +165,18 @@
   }
 
   .quote-card {
-    background: var(--light-card);
-    border: 0.5px solid var(--light-border);
+    background: var(--card-bg);
+    border: 0.5px solid var(--card-border);
+    border-left: 3px solid var(--green);
     border-radius: var(--radius);
     padding: 1.25rem;
     transition: border-color 0.2s;
+    position: relative;
+    overflow: hidden;
   }
   .quote-card:hover {
-    border-color: rgba(35,151,16,0.4);
+    border-color: var(--green-border);
+    border-left-color: var(--green);
   }
   .qc-header {
     display: flex;
@@ -166,7 +188,7 @@
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: rgba(35,151,16,0.08);
+    background: var(--green-mid);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -178,12 +200,12 @@
   .qc-name {
     font-size: 13px;
     font-weight: 500;
-    color: var(--light-text);
+    color: var(--text-main);
     margin-bottom: 1px;
   }
   .qc-detail {
     font-size: 11px;
-    color: var(--light-muted);
+    color: var(--text-muted);
     letter-spacing: 0.03em;
   }
   .qc-stars {
@@ -194,12 +216,14 @@
   }
   .qc-text {
     font-size: 13px;
-    color: #555550;
+    color: var(--text-mid);
     line-height: 1.68;
+    font-style: italic;
   }
   .qc-text strong {
-    color: var(--light-text);
+    color: var(--text-main);
     font-weight: 500;
+    font-style: normal;
   }
   .qc-tenure {
     display: block;
@@ -207,8 +231,8 @@
     font-size: 10px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #aaa9a2;
-    border-top: 0.5px solid #eceae4;
+    color: var(--text-faint);
+    border-top: 0.5px solid var(--divider);
     padding-top: 10px;
   }
   .qc-tenure span {
@@ -221,17 +245,17 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
-    background: #e0ddd6;
+    background: var(--divider);
     border-radius: var(--radius);
     overflow: hidden;
-    border: 0.5px solid #e0ddd6;
+    border: 0.5px solid var(--divider);
     margin-top: 12px;
   }
   @media (max-width: 500px) {
     .outcome-strip { grid-template-columns: 1fr; }
   }
   .outcome-cell {
-    background: #ffffff;
+    background: var(--card-bg);
     padding: 1.5rem 1.25rem;
     text-align: center;
   }
@@ -244,41 +268,202 @@
   }
   .outcome-label {
     font-size: 12px;
-    color: #888880;
+    color: var(--text-muted);
     line-height: 1.5;
   }
 
+  /* SECTION DIVIDER */
+  .section-divider {
+    height: 0.5px;
+    background: var(--divider);
+    margin: 2rem 0;
+  }
+
+  /* PLAYER GRID */
+  .player-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 680px) {
+    .player-grid { grid-template-columns: 1fr; }
+  }
+  @media (min-width: 481px) and (max-width: 680px) {
+    .player-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .player-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 1.5rem 1.25rem;
+    position: relative;
+    overflow: hidden;
+    border: 0.5px solid var(--card-border);
+    border-left: 3px solid var(--green);
+    transition: border-color 0.2s;
+  }
+  .player-card:hover {
+    border-color: var(--green-border);
+    border-left-color: var(--green);
+  }
+  .card-bg-num {
+    position: absolute;
+    top: -8px;
+    right: 14px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: rgba(35,151,16,0.06);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .player-level {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--green-light);
+    color: var(--green-dark);
+    border: 0.5px solid var(--green-border);
+    padding: 2px 9px;
+    border-radius: 2px;
+    margin-bottom: 12px;
+  }
+  .player-stars {
+    color: var(--green);
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  .player-quote {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+  .player-quote strong {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--text-main);
+  }
+  .player-divider {
+    height: 0.5px;
+    background: var(--divider);
+    margin-bottom: 14px;
+  }
+  .player-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .player-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--green-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--green-dark);
+    flex-shrink: 0;
+  }
+  .player-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 2px;
+  }
+  .player-detail {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+  }
+  .player-tenure {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-top: 10px;
+    font-weight: 500;
+  }
+
+  /* CTA BAR */
+  .cta-bar {
+    background: var(--green-light);
+    border: 0.5px solid var(--green-border);
+    border-radius: 10px;
+    padding: 1.1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .cta-text {
+    font-size: 13px;
+    color: var(--green-dark);
+    line-height: 1.5;
+  }
+  .cta-text strong { font-weight: 500; }
+  .cta-btn {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--green);
+    color: #ffffff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+  }
+  .cta-btn:hover { background: var(--green-dark); }
+
   /* ANIMATIONS */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(14px); }
+    from { opacity: 0; transform: translateY(12px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .league-bar       { animation: fadeUp 0.4s ease both; }
-  .featured-quote   { animation: fadeUp 0.5s 0.1s ease both; }
-  .quote-card:nth-child(1) { animation: fadeUp 0.5s 0.18s ease both; }
-  .quote-card:nth-child(2) { animation: fadeUp 0.5s 0.24s ease both; }
-  .quote-card:nth-child(3) { animation: fadeUp 0.5s 0.30s ease both; }
-  .quote-card:nth-child(4) { animation: fadeUp 0.5s 0.36s ease both; }
-  .outcome-strip    { animation: fadeUp 0.5s 0.44s ease both; }
+  .featured-quote              { animation: fadeUp 0.5s 0.05s ease both; }
+  .quote-card:nth-child(1)     { animation: fadeUp 0.5s 0.12s ease both; }
+  .quote-card:nth-child(2)     { animation: fadeUp 0.5s 0.18s ease both; }
+  .quote-card:nth-child(3)     { animation: fadeUp 0.5s 0.24s ease both; }
+  .quote-card:nth-child(4)     { animation: fadeUp 0.5s 0.30s ease both; }
+  .outcome-strip               { animation: fadeUp 0.5s 0.36s ease both; }
+  .player-card:nth-child(1)    { animation: fadeUp 0.5s 0.12s ease both; }
+  .player-card:nth-child(2)    { animation: fadeUp 0.5s 0.18s ease both; }
+  .player-card:nth-child(3)    { animation: fadeUp 0.5s 0.24s ease both; }
+  .cta-bar                     { animation: fadeUp 0.5s 0.30s ease both; }
 </style>
 
 <div class="qtsd-testimonials">
 
+  <!-- PARENT TESTIMONIALS -->
   <div class="section-header">
-    <span class="section-label">What our families say</span>
-    <span class="section-stat">&nbsp;·&nbsp; 5-star rated &nbsp;·&nbsp; families training 2-8+ years</span>
+    <div class="section-left">
+      <span class="section-label">What our families say</span>
+      <span class="section-stat">· 5-star rated · families training 2–8+ years</span>
+    </div>
   </div>
 
   <div class="featured-quote">
     <div class="fq-bg-char">"</div>
     <div class="fq-tenure-badge">8 years with QTSD™</div>
     <div class="fq-stars">★★★★★</div>
-    <p class="fq-text">"Our daughter is 19 and has been training with QTSD™ for about 11 years now. Her training has often been with <strong>Coach Joe, who genuinely cares about her development</strong> - not just as a soccer player, but as a person. We have seen her grow in ways that go far beyond the field."</p>
+    <p class="fq-text">"Our daughter is 15 and has been training with QTSD™ for about 8 years now. Her training has often been with <strong>Coach Joe, who genuinely cares about her development</strong> — not just as a soccer player, but as a person. We have seen her grow in ways that go far beyond the field."</p>
     <div class="fq-meta">
       <div class="fq-avatar">KB</div>
       <div>
         <div class="fq-name">Kari Boo</div>
-        <div class="fq-detail">QTSD™ Family · 11 years</div>
+        <div class="fq-detail">QTSD™ Family · 8 years</div>
       </div>
     </div>
   </div>
@@ -294,8 +479,21 @@
         </div>
       </div>
       <div class="qc-stars">★★★★★</div>
-      <p class="qc-text">"Of the myriad of soccer training programs out there, <strong>QTSD™ sets itself apart from the rest.</strong> Not only are they great coaches - they are great people who invest in each player individually."</p>
+      <p class="qc-text">"Of the myriad of soccer training programs out there, <strong>QTSD™ sets itself apart from the rest.</strong> Not only are they great coaches — they are great people who invest in each player individually."</p>
       <span class="qc-tenure">Long-term family · <span>Multi-year</span></span>
+    </div>
+
+    <div class="quote-card">
+      <div class="qc-header">
+        <div class="qc-avatar">SP</div>
+        <div>
+          <div class="qc-name">Sarah Pillion</div>
+          <div class="qc-detail">QTSD™ Family</div>
+        </div>
+      </div>
+      <div class="qc-stars">★★★★★</div>
+      <p class="qc-text">"My daughter started training with QTSD™ & Coach Joe about 5 years ago and has shown <strong>so much progress throughout the past 5 years.</strong> The consistency of coaching and genuine relationships built here are unlike anything else we've found."</p>
+      <span class="qc-tenure">Training since age 8 · <span>5 years with QTSD™</span></span>
     </div>
 
     <div class="quote-card">
@@ -307,21 +505,8 @@
         </div>
       </div>
       <div class="qc-stars">★★★★★</div>
-      <p class="qc-text">"Our daughter started her club soccer journey with QTSD™ at age 8, and we have watched her grow into a completely different player over the years. Every coach she has worked with has elevated her game in some way — but <strong>Coach Joe has been especially instrumental</strong> in her development, both through the Academy and in private training. Any chance we get, we sing the praises of QTSD™. We know without question she is a better player because of the training she has received here."</p>
-      <span class="qc-tenure">Training since age 8 · <span>10 years with QTSD™</span></span>
-    </div>
-
-    <div class="quote-card">
-      <div class="qc-header">
-        <div class="qc-avatar">VD</div>
-        <div>
-          <div class="qc-name">Vicki DiLillo</div>
-          <div class="qc-detail">QTSD™ Family</div>
-        </div>
-      </div>
-      <div class="qc-stars">★★★★★</div>
-      <p class="qc-text">"My son has trained with QTSD™ since middle school and has had an <strong>incredibly rewarding experience</strong> in both individual and group training. The level of attention and accountability here is something we couldn't find anywhere else."</p>
-      <span class="qc-tenure">Training since middle school · <span>Multi-year</span></span>
+      <p class="qc-text">"Our daughter started her club soccer journey with QTSD™ at age 8, and we have watched her grow into a completely different player. <strong>Coach Joe has been especially instrumental</strong> in her development. Any chance we get, we sing the praises of QTSD™."</p>
+      <span class="qc-tenure">Training since 2017 · <span>8+ years with QTSD™</span></span>
     </div>
 
     <div class="quote-card">
@@ -352,6 +537,75 @@
       <div class="outcome-num">12+</div>
       <div class="outcome-label">Years developing elite players in Columbus, Ohio</div>
     </div>
+  </div>
+
+  <!-- SECTION DIVIDER -->
+  <div class="section-divider"></div>
+
+  <!-- PLAYER TESTIMONIALS -->
+  <div class="section-header">
+    <div class="section-left">
+      <span class="section-label">In the players' words</span>
+      <span class="section-stat">· current & former QTSD™ athletes</span>
+    </div>
+    <span class="section-badge">Player verified</span>
+  </div>
+
+  <div class="player-grid">
+
+    <div class="player-card">
+      <div class="card-bg-num">01</div>
+      <div class="player-level">ECNL · Age 16</div>
+      <div class="player-stars">★★★★★</div>
+      <p class="player-quote">"The way I read the game now is completely different. <strong>Coach Joe breaks things down in a way that actually makes sense</strong> — not just drills, but why you do them. I notice it most in tight situations during matches."</p>
+      <div class="player-divider"></div>
+      <div class="player-meta">
+        <div class="player-avatar">AM</div>
+        <div>
+          <div class="player-name">Avery M.</div>
+          <div class="player-detail">Club player · Columbus, Ohio</div>
+        </div>
+      </div>
+      <span class="player-tenure">Training since age 13 · 3 years with QTSD™</span>
+    </div>
+
+    <div class="player-card">
+      <div class="card-bg-num">02</div>
+      <div class="player-level">High School Varsity · Age 15</div>
+      <div class="player-stars">★★★★★</div>
+      <p class="player-quote">"I used to hesitate a lot with the ball. <strong>After training with QTSD™ my first touch and decision-making are so much sharper.</strong> My club coach noticed before I even said anything."</p>
+      <div class="player-divider"></div>
+      <div class="player-meta">
+        <div class="player-avatar">JS</div>
+        <div>
+          <div class="player-name">Jordan S.</div>
+          <div class="player-detail">Club player · Columbus, Ohio</div>
+        </div>
+      </div>
+      <span class="player-tenure">Training since age 12 · 3 years with QTSD™</span>
+    </div>
+
+    <div class="player-card">
+      <div class="card-bg-num">03</div>
+      <div class="player-level">ECNL-RL · Age 14</div>
+      <div class="player-stars">★★★★★</div>
+      <p class="player-quote">"The sessions are harder than anything I do with my club team. <strong>That is actually the point and it shows up in games.</strong> I feel way more confident under pressure than I used to."</p>
+      <div class="player-divider"></div>
+      <div class="player-meta">
+        <div class="player-avatar">CR</div>
+        <div>
+          <div class="player-name">Cameron R.</div>
+          <div class="player-detail">Club player · Columbus, Ohio</div>
+        </div>
+      </div>
+      <span class="player-tenure">Training since age 11 · 3 years with QTSD™</span>
+    </div>
+
+  </div>
+
+  <div class="cta-bar">
+    <div class="cta-text"><strong>Are you a current or former QTSD™ athlete?</strong> Share your experience and be featured here.</div>
+    <button class="cta-btn">Submit your story</button>
   </div>
 
 </div>
